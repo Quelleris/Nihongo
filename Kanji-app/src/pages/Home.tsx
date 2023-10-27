@@ -1,32 +1,9 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export const Home = () => {
   return (
     <>
-      <header className="primary-header">
-        <div className="container flex flex-jc-sb flex-ai-c">
-          <a href="/" className="logo">
-            Nippon
-          </a>
-          <nav className="navbar">
-            <ul className="navbar-list">
-              <li className="navbar-item">
-                <a href="/">Hiragana</a>
-              </li>
-              <li className="navbar-item">
-                <a href="/">Katakana</a>
-              </li>
-              <li className="navbar-item">
-                <a href="/">Kanji</a>
-              </li>
-              <li className="navbar-item">
-                <a href="/">Learn</a>
-              </li>
-            </ul>
-          </nav>
-          <button className="theme-toggler">Light</button>
-        </div>
-      </header>
       <main id="main-content">
         <section className="hero section">
           <div className="container">
