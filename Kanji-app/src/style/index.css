@@ -17,7 +17,7 @@
   --fs-4: clamp(1.9438rem, 1.7915rem + 0.6498vw, 2.4413rem);
   --fs-5: clamp(2.3325rem, 2.1123rem + 0.9396vw, 3.0519rem);
   --fs-6: clamp(2.7994rem, 2.4885rem + 1.3265vw, 3.815rem);
-  }
+}
 
 *,
 *::before,
@@ -82,16 +82,16 @@ body {
   --secondary: var(--clr-secondary);
 
   background-color: var(--background);
-  font-family: 'Noto Sans JP', sans-serif;
+  font-family: "Noto Sans JP", sans-serif;
   font-size: var(--fs-1);
-  color: var(--text); 
+  color: var(--text);
 }
 
 body.active {
   overflow: hidden;
 }
 
-body.dark-theme {
+body.dark {
   --background: var(--clr-dark-background);
   --text: var(--clr-dark-text);
   --secondary: var(--clr-dark-secondary);
@@ -104,7 +104,7 @@ body.dark-theme {
     --secondary: var(--clr-dark-secondary);
   }
 
-  body.light-theme {
+  body.dark {
     --background: var(--clr-background);
     --text: var(--clr-text);
     --secondary: var(--clr-secondary);
@@ -147,16 +147,6 @@ body.dark-theme {
 
 /* HEADER */
 
-.header {
-  position: fixed;
-  top: 0;
-  left:0;
-  width: 100%;
-  padding-block: 1rem;
-  z-index: 4;
-  box-shadow: 0 0 2px hsla(0, 0%, 0%, 0.2);
-}
-
 .container {
   max-width: 1400px;
   margin: 0 auto;
@@ -179,4 +169,50 @@ body.dark-theme {
 
 .footer {
   background-color: var(--secondary);
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding-block: 1rem;
+  z-index: 4;
+  box-shadow: 0 0 2px hsla(0, 0%, 0%, 0.2);
+}
+
+.navbar-list {
+  gap: 1rem;
+}
+
+@media (max-width: 54em) {
+  .navbar-list {
+    position: fixed;
+    top: 10%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background-color: var(--clr-neutral-100);
+    padding-top: 6.25rem;
+    padding: 1.625rem;
+    text-align: center;
+    visibility: hidden;
+  }
+
+  .navbar-list.active {
+    visibility: visible;
+  }
+}
+
+.kana-list.grid-wrapper {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(5, 1fr);
+  /* grid-auto-columns: minmax(auto, 100px); */
+}
+
+.kana-card {
+  /* grid-area: kc; */
+  background-color: var(--secondary);
+  border-radius: 1rem;
 }
