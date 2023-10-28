@@ -7,7 +7,7 @@ import {
 } from "../pages/index";
 import "../style/index.css";
 import { Routes, Route } from "react-router-dom";
-import { Navbar } from "./Navbar";
+import { Navbar } from "./Navbar/Navbar";
 
 export default function App() {
   return (
