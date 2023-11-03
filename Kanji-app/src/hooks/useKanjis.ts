@@ -3,7 +3,7 @@ import axios from "axios";
 
 export const useKanjis = (grade: number) => {
   return useQuery({
-    queryKey: ["KanjiData"],
+    queryKey: ["KanjisData"],
     queryFn: async () => {
       const { data } = await axios.get(
         `https://kanjiapi.dev/v1/kanji/grade-${grade}`
