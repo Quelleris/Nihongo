@@ -80,6 +80,7 @@ body {
   --background: var(--clr-background);
   --text: var(--clr-text);
   --secondary: var(--clr-secondary);
+  --primary: var(var(--clr-primary));
 
   background-color: var(--background);
   font-family: "Noto Sans JP", sans-serif;
@@ -95,6 +96,7 @@ body.dark {
   --background: var(--clr-dark-background);
   --text: var(--clr-dark-text);
   --secondary: var(--clr-dark-secondary);
+  --primary: var(var(--clr-dark-primary));
 }
 
 @media (prefers-color-scheme: dark) {
@@ -102,12 +104,14 @@ body.dark {
     --background: var(--clr-dark-background);
     --text: var(--clr-dark-text);
     --secondary: var(--clr-dark-secondary);
+    --primary: var(--clr-dark-primary);
   }
 
   body.dark {
     --background: var(--clr-background);
     --text: var(--clr-text);
     --secondary: var(--clr-secondary);
+    --primary: var(--clr-primary);
   }
 }
 
@@ -214,5 +218,26 @@ body.dark {
 .kana-card {
   /* grid-area: kc; */
   background-color: var(--secondary);
+  border-radius: 1rem;
+}
+
+.quiz-header {
+  background-color: var(--primary);
+  padding: 1rem 0.5rem;
+}
+
+.quiz-character {
+  font-size: 2rem;
+}
+
+.quiz-input {
+  background-color: var(--text);
+  color: var(--secondary);
+  margin: 1rem auto;
+}
+
+.quiz-answer-btn {
+  background-color: var(--primary);
+  padding: 0.5rem;
   border-radius: 1rem;
 }

@@ -1,34 +1,22 @@
-import { useState } from "react";
-import { useQuery } from "react-query";
-import axios from "axios";
+import { useKanjis } from "../hooks/useKanjis";
+import { Quiz } from "../components/Quiz";
+import {
+  QueryObserverSuccessResult,
+  UseQueryResult,
+} from "@tanstack/react-query";
 
-const fetchKanjiData = () => {
-  return axios.get("https://kanjiapi.dev/v1/kanji/grade-1");
+const isFetchedWithSuccess = <TData, TError = unknown>(
+  query: UseQueryResult<TData, TError>
+): query is QueryObserverSuccessResult<TData, TError> => {
+  return !query.isError && !query.isLoading && query.data !== undefined;
 };
 
 export const KanjiLearn = () => {
-  const { isLoading, data, isError, error } = useQuery(
-    "kanjiData",
-    fetchKanjiData
-  );
+  const kanjiQuery = useKanjis(1);
 
-  const getRandomKanji = () => {
-    return data?.data[Math.floor(Math.random() * data?.data.lenght)];
-  };
-
-  if (isLoading) {
-    return <h2>Loading...</h2>;
+  if (isFetchedWithSuccess(kanjiQuery)) {
+    return <Quiz characters={kanjiQuery.data} />;
+  } else {
+    return <div>Loading...</div>;
   }
-
-  if (isError) {
-    return <h2>{error.message}</h2>;
-  }
-
-  return (
-    <div>
-      {data?.data.map((kanji) => {
-        return <li>{kanji}</li>;
-      })}
-    </div>
-  );
 };
