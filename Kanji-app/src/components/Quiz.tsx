@@ -8,14 +8,22 @@ export const Quiz = ({ characters }: { characters: string[] }) => {
     getRandomKanji(characters)
   );
   const [error, setError] = useState(false);
-  console.log("character", currentCharacter);
+  const [IsAnswered, setIsAnswered] = useState(false);
   const { data, refetch } = useKanji(currentCharacter);
-  console.log("data", data);
 
   const checkAnswer = (answer: string) => {
+    setIsAnswered(true);
     if (data.includes(answer.toLowerCase())) {
-      setCurrentCharacter(getRandomKanji(characters));
+      setError(false);
+    } else {
+      setError(true);
     }
+  };
+
+  const setNextCharacter = () => {
+    setError(false);
+    setIsAnswered(false);
+    setCurrentCharacter(getRandomKanji(characters));
   };
 
   useEffect(() => {
@@ -23,11 +31,30 @@ export const Quiz = ({ characters }: { characters: string[] }) => {
   }, [currentCharacter]);
 
   return (
-    <div className="container">
-      <div className="quiz-header">
-        <div className="quiz-character">{currentCharacter}</div>
+    <section className="quiz">
+      <div className="container">
+        <div className="quiz-header">
+          <div className="quiz-character">{currentCharacter}</div>
+        </div>
+        <QuizForm onSubmit={checkAnswer} />
+        {IsAnswered && (
+          <div
+            className="flex flex-jc-c flex-ai-c"
+            style={
+              IsAnswered ? { visibility: "visible" } : { visibility: "hidden" }
+            }
+          >
+            <h2>
+              {error
+                ? `wrong. The meaning of ${currentCharacter} is ${data}`
+                : "That's correct!"}
+            </h2>
+            <button className="quiz-answer-btn" onClick={setNextCharacter}>
+              next
+            </button>
+          </div>
+        )}
       </div>
-      <QuizForm onSubmit={checkAnswer} />
-    </div>
+    </section>
   );
 };

@@ -18,6 +18,7 @@ export const QuizForm = ({ onSubmit }) => {
         className="quiz-input"
         onChange={(e) => setAnswer(e.target.value)}
         value={answer}
+        placeholder="Your Answer"
       />
     </form>
   );

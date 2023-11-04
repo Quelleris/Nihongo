@@ -2,7 +2,6 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
 export const useKanji = (kanjiId: string) => {
-  console.log("kanjiId", kanjiId);
   return useQuery({
     queryKey: ["KanjiData"],
     queryFn: async () => {
